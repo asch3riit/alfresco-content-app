@@ -280,6 +280,10 @@ export function canUpdateSelectedFolder(context: RuleContext): boolean {
   return false;
 }
 
+export function isContentEnabled(): boolean {
+  return localStorage && localStorage.getItem('contentPlugin') === 'true';
+}
+
 /**
  * Checks if user has selected a **locked** file node.
  * JSON ref: `app.selection.file.isLocked`

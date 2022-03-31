@@ -1,4 +1,4 @@
-<ng-container *ngIf="expanded">
+<ng-container *ngIf="expanded && createActions.length">
   <button
     mat-stroked-button
     data-automation-id="create-button"
@@ -13,7 +13,7 @@
   </button>
 </ng-container>
 
-<ng-container *ngIf="!expanded">
+<ng-container *ngIf="!expanded && createActions.length">
   <button
     mat-icon-button
     [class]="{

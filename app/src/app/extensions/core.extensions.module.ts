@@ -23,7 +23,12 @@
  * along with Alfresco. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CoreModule, AuthGuardEcm, UserInfoComponent, NotificationHistoryComponent } from '@alfresco/adf-core';
+import {
+  CoreModule,
+  AuthGuardEcm,
+  UserInfoComponent,
+  NotificationHistoryComponent
+} from '@alfresco/adf-core';
 import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { AppLayoutComponent } from '../components/layout/app-layout/app-layout.component';
@@ -54,6 +59,7 @@ import { LanguagePickerComponent } from '../components/common/language-picker/la
 import { LogoutComponent } from '../components/common/logout/logout.component';
 import { AppExtensionService, ExtensionsDataLoaderGuard } from '@alfresco/aca-shared';
 import { PreviewComponent } from '../components/preview/preview.component';
+import { ContentExtensionService } from '../services/content-extension.service';
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function setupExtensions(service: AppExtensionService): () => void {
@@ -71,7 +77,7 @@ export class CoreExtensionsModule {
         {
           provide: APP_INITIALIZER,
           useFactory: setupExtensions,
-          deps: [AppExtensionService],
+          deps: [AppExtensionService, ContentExtensionService],
           multi: true
         }
       ]
@@ -157,6 +163,7 @@ export class CoreExtensionsModule {
       'app.selection.hasNoLibraryRole': rules.hasNoLibraryRole,
       'app.selection.folder': rules.hasFolderSelected,
       'app.selection.folder.canUpdate': rules.canUpdateSelectedFolder,
+      'app.content.enabled': rules.isContentEnabled,
 
       'app.navigation.folder.canCreate': rules.canCreateFolder,
       'app.navigation.folder.canUpload': rules.canUpload,
