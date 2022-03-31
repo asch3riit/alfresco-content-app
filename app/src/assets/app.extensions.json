@@ -240,9 +240,6 @@
     "navbar": [
       {
         "id": "app.navbar.primary",
-        "rules": {
-          "visible": "app.content.enabled"
-        },
         "items": [
           {
             "id": "app.navbar.personalFiles",
@@ -250,7 +247,10 @@
             "icon": "folder",
             "title": "APP.BROWSE.PERSONAL.SIDENAV_LINK.LABEL",
             "description": "APP.BROWSE.PERSONAL.SIDENAV_LINK.TOOLTIP",
-            "route": "personal-files"
+            "route": "personal-files",
+            "rules": {
+              "visible": "app.content.enabled"
+            }
           },
           {
             "id": "app.navbar.libraries.menu",
@@ -258,6 +258,9 @@
             "icon": "library_books",
             "title": "APP.BROWSE.LIBRARIES.SIDENAV_LINK.LABEL",
             "description": "APP.BROWSE.LIBRARIES.SIDENAV_LINK.TOOLTIP",
+            "rules": {
+              "visible": "app.content.enabled"
+            },
             "children": [
               {
                 "id": "app.navbar.libraries.favorite",
